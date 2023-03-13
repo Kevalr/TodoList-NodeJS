@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="todo-app-container">
+          <div class="task-create-form-container">
+            <div>
+              <h1 class="app-heading">TODO App</h1>
+              <hr>
+            </div>
+            
+            <form action="create-task" method="post">
+                <div class="enter-task-name-container">
+                <label for="">
+                    DESCRIPTION
+                </label>
+                <BR />
+                <input type='text' id='taskName-input' name='taskName' placeholder='What do you need to do?' />
+                <hr>
+                </div>
+            
+                <div class='enter-task-details-container'>
+            
+                <div class="select-task-category-container">
+                    <label for="taskCategory">CATEGORY</label>
+                    </br>
+                    <select name="taskCategory" id="task-category-input">
+                    <option value="none">Choose a category</option>
+                    <option value="home">Home</option>
+                    <option value="work">Work</option>
+                    <option value="personal">Personal</option>
+                    <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="select-task-due-date-container">
+                    <label for="">DUE DATE</label>
+                    <br />
+                    <input type="date" name='taskDueDate' id='selete-task-due-date'>
+                </div>
+                </div>
+                <hr>
+                <div class="create-task-button-container">
+                    
+                <button type='submit' id='create-task-button'>+ ADD TASK </button>
+                </div>
+            </form>
+          </div>
+          <div id="todo-list-container">
+            <% taskList.forEach((task) => {  %> 
+            <div class="task-item <%= task.status%>">
+              <div class="toggle-task-status-button-container">
+                <form method="post" action="toggle-task-status?id=<%=task.
+                _id%>">
+                    <% if(task.status == 'completed') { %>
+                    <input type='checkbox' name='taskStatus' value='completed' checked onChange="this.form.submit()" class='toggle-task-status-button' />
+                    <% } else { %>
+                     <input type='checkbox' name='taskStatus' value="pending" onChange="this.form.submit()" class='toggle-task-status-button' /> 
+                     <% } %> 
+                </form>
+              </div>
+        
+              <div class="task-name-deadline-container">
+                <p class='task-name'>
+                  <%= task.taskName%>
+                </p>
+                <div class="task-deadline-container">
+                  <p>cal : </p>
+                  <p><%= task.dueDate%></p>
+                  </p>
+                </div>
+              </div>
+        
+              <div class="task-category-tag-container">
+                <div class='task-category-tag <%= task.category%>'>
+                  <%= task.category%>
+                </div>
+              </div>
+              <div class="task-delete-button-container">
+                <button class='task-delete-button' id="task-delete-button">
+                  Delete
+                </button>
+              </div>
+            
+          </div>
+
+          <% })  %>
+        </div>
+
+        <script>
+          document.getElementById('task-delete-button').addEventListener('click', abc());
+          function abc() {
+            alert('hello')
+          }
+        </script>
+</body>
+</html>
