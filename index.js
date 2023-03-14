@@ -14,9 +14,7 @@ app.set('views','./views');
 
 //middleware for converting request data into key value form
 app.use(express.urlencoded());
-// app.use (bodyParser.json());
-// app.use (bodyParser.urlencoded ({ extended: false }));
-//middleware for accessing static files
+
 app.use(express.static("assets"));
 
 // ------------------ MiddleWares = FINISHED --------------------//

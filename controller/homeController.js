@@ -3,25 +3,6 @@ const app = epxress();
 
 const Task = require("../models/task");
 
-// let taskList = [{
-//     taskName: 'Hello this is testing task',
-//     category: 'work',
-//     dueDate: '2023/03/20',
-//     status: 'pending',
-// },
-// {
-//     taskName: 'keval it is testing task',
-//     category: 'personal',
-//     dueDate: '2023/03/20',
-//     status: 'completed',
-// },
-// {
-//     taskName: 'keval it is testing task',
-//     category: 'personal',
-//     dueDate: '2023/03/20',
-//     status: 'completed',
-// }]
-
 const showTodoListApp = async (req, res) => {
   let taskList = await Task.find({});
   return res.render("index", { taskList: taskList });
@@ -59,4 +40,10 @@ const toggleTask = async (req, res) => {
   await task.save();
   res.redirect("back");
 };
-module.exports = { showTodoListApp, createTask, toggleTask };
+
+const deleteTask = async(req, res) => {
+    await Task.findByIdAndDelete(req.query.id);
+    return res.redirect('back');
+}
+
+module.exports = { showTodoListApp, createTask, toggleTask, deleteTask };

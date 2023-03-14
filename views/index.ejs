@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoList</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="todo-app-container">
@@ -21,7 +22,7 @@
                     DESCRIPTION
                 </label>
                 <BR />
-                <input type='text' id='taskName-input' name='taskName' placeholder='What do you need to do?' />
+                <input type='text' id='taskName-input' name='taskName' placeholder='What do you need to do?' required/>
                 <hr>
                 </div>
             
@@ -30,8 +31,8 @@
                 <div class="select-task-category-container">
                     <label for="taskCategory">CATEGORY</label>
                     </br>
-                    <select name="taskCategory" id="task-category-input">
-                    <option value="none">Choose a category</option>
+                    <select name="taskCategory" required id="task-category-input">
+                    <option value="">Choose a category</option>
                     <option value="home">Home</option>
                     <option value="work">Work</option>
                     <option value="personal">Personal</option>
@@ -41,7 +42,7 @@
                 <div class="select-task-due-date-container">
                     <label for="">DUE DATE</label>
                     <br />
-                    <input type="date" name='taskDueDate' id='selete-task-due-date'>
+                    <input required type="date" name='taskDueDate' id='selete-task-due-date'>
                 </div>
                 </div>
                 <hr>
@@ -82,21 +83,15 @@
                 </div>
               </div>
               <div class="task-delete-button-container">
-                <button class='task-delete-button' id="task-delete-button">
-                  Delete
-                </button>
+                <a class='task-delete-button' id="task-delete-button" href="deletetask?id=<%=task.
+                _id%>">
+                <i class="fa fa-trash-o" style="font-size:24px;"></i>
+                </a>
               </div>
             
           </div>
 
           <% })  %>
         </div>
-
-        <script>
-          document.getElementById('task-delete-button').addEventListener('click', abc());
-          function abc() {
-            alert('hello')
-          }
-        </script>
 </body>
 </html>

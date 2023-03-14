@@ -8,9 +8,10 @@ const homeController = require('../controller/homeController');
 
 router.get('/', homeController.showTodoListApp);
 
-// const createTask = require('');
 router.post('/create-task', homeController.createTask);
 
-router.post('/toggle-task-status', homeController.toggleTask)
+router.post('/toggle-task-status', homeController.toggleTask);
 
-module.exports = router
+router.get('/deletetask', homeController.deleteTask);
+
+module.exports = router;

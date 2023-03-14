@@ -148,24 +148,34 @@ label {
 }
 
 .task-category-tag-container, .task-delete-button-container {
-  width: 14%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.task-category-tag-container {
+  width: 14%;
+}
+.task-delete-button-container {
+  width: 5%; 
 }
 
 .task-category-tag, .task-delete-button {
   display: inline-block;
   height: fit-content;
   padding: 5px 10px;
-  font-size: 20px;
   border-radius: 5px;
-  width: 100px;
   text-align: center;
 }
 
+.task-category-tag {
+  font-size: 20px;
+  width: 100px;
+}
+
 .task-delete-button {
-  background-color: red;
+  color:black;
+  padding:5px;
 }
 
 .personal {
@@ -190,4 +200,8 @@ label {
 
 #todo-list-container .completed p {
   text-decoration: line-through;
+}
+
+#todo-list-container .completed a {
+  color:red;
 }
