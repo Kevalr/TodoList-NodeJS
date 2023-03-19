@@ -1,13 +1,16 @@
 const epxress = require("express");
 const app = epxress();
 
+//Creating instance to schema to populate database with that
 const Task = require("../models/task");
 
+//For Fetching and returning all tasks from databse
 const showTodoListApp = async (req, res) => {
   let taskList = await Task.find({});
   return res.render("index", { taskList: taskList });
 };
 
+//For Creating the new Task
 const createTask = (req, res) => {
   console.log(req.body);
   Task.create({
@@ -19,16 +22,10 @@ const createTask = (req, res) => {
   return res.redirect("back");
 };
 
+//For completeting or un-completing a task
 const toggleTask = async (req, res) => {
 
   let updatedTaskStatus = "";
-//   console.log(req.body);
-//   let task = await Task.findById(req.query.id);
-//   console.log(task);
-  // await Task.findOneAndUpdate(req.query.id, { status: updatedTaskStatus})
-  // task = await Task.findById(req.query.id);
-  // console.log(task);
-
   const task = await Task.findById(req.query.id);
   if (task.status == "completed") {
     updatedTaskStatus = "pending";
@@ -41,6 +38,7 @@ const toggleTask = async (req, res) => {
   res.redirect("back");
 };
 
+//For Deleteting the task
 const deleteTask = async(req, res) => {
     await Task.findByIdAndDelete(req.query.id);
     return res.redirect('back');

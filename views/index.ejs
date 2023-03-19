@@ -10,12 +10,15 @@
 </head>
 <body>
     <div class="todo-app-container">
+      <!-- Todo List Header and task input form container-->
           <div class="task-create-form-container">
+            <!-- Website Heading -->
             <div>
               <h1 class="app-heading">TODO App</h1>
               <hr>
             </div>
             
+            <!-- Form for adding Tasks -->
             <form action="create-task" method="post">
                 <div class="enter-task-name-container">
                 <label for="">
@@ -52,6 +55,7 @@
                 </div>
             </form>
           </div>
+          <!-- Todolist Container -->
           <div id="todo-list-container">
             <% taskList.forEach((task) => {  %> 
             <div class="task-item <%= task.status%>">
